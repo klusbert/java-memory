@@ -3,10 +3,9 @@ package Util;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 
-import java.io.FileNotFoundException;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
 
 public class Memory {
     interface CLibrary extends Library {

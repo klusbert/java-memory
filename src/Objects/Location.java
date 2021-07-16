@@ -17,4 +17,13 @@ public class Location {
         this.y = _y;
         this.z = _z;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
 }

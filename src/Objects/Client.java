@@ -1,33 +1,52 @@
 package Objects;
 
 import Addresses.AddressIdentifier;
-import Addresses.PlayerLocation;
+import Addresses.AddressScanner;
 import Util.Memory;
 import Util.MemoryScanner;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
 
 public class Client {
     private Memory memory;
     private MemoryScanner memoryScanner;
 
-    public PlayerLocation playerLocation;
+    private AddressScanner addressScanner;
     private Map<AddressIdentifier, Long> addresses;
+    private Player player;
+    private Inventory inventory;
+
 
     public Client(int _tibiaPid) {
         memory = new Memory(_tibiaPid);
         memoryScanner = new MemoryScanner(_tibiaPid);
 
         addresses = new HashMap<AddressIdentifier, Long>();
-        playerLocation = new PlayerLocation(memoryScanner, addresses);
+        addressScanner = new AddressScanner(memoryScanner, addresses);
+
+
+        player = new Player(this);
+        inventory = new Inventory(this);
 
     }
 
+    public long getAddress(AddressIdentifier identifier) {
+        return addresses.get(identifier);
+    }
 
     public Memory getMemory() {
         return memory;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+
 }
