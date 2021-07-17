@@ -11,6 +11,7 @@ public class Program {
         client = new Client(processId);
         System.out.println(client.getPlayer().getLocation());
         System.out.println(client.getPlayer().getExperience());
+        System.out.println(client.getPlayer().getPlayerLevel());
         System.out.println(client.getInventory().getInventoryCount());
 
     }

@@ -9,5 +9,6 @@ public class AddressScanner {
         new PlayerLocation().scan(_memoryScanner, addresses);
         new Inventory().scan(_memoryScanner, addresses);
         new PlayerExperience().scan(_memoryScanner, addresses);
+        new PlayerLevel().scan(_memoryScanner, addresses);
     }
 }

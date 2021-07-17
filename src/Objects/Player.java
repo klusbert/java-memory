@@ -26,4 +26,8 @@ public class Player {
     public Integer getExperience() {
         return memory.readInt(client.getAddress(AddressIdentifier.PLAYER_EXPERIENCE));
     }
+
+    public Integer getPlayerLevel() {
+        return memory.readInt(client.getAddress(AddressIdentifier.PLAYER_LEVEL));
+    }
 }

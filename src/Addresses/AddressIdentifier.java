@@ -5,5 +5,6 @@ public enum AddressIdentifier {
     PLAYER_Y,
     PLAYER_Z,
     INVENTORY,
-    PLAYER_EXPERIENCE
+    PLAYER_EXPERIENCE,
+    PLAYER_LEVEL
 }
