@@ -16,6 +16,13 @@ public class clientChooser extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
+        DefaultListModel<String> model = new DefaultListModel<>();
+        list1.setModel(model);
+        model.addElement("asd");
+        model.addElement("asd1");
+        model.addElement("asd2");
+
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -45,9 +52,8 @@ public class clientChooser extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
-
-        this.asd = "ok";
+           ;
+        this.asd = "ok " + list1.getSelectedIndex();
         dispose();
     }
 

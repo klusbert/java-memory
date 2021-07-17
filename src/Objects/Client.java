@@ -6,6 +6,7 @@ import Util.Memory;
 import Util.MemoryScanner;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -48,5 +49,10 @@ public class Client {
         return inventory;
     }
 
+    public static List<Client> getClients() {
+
+
+        return null;
+    }
 
 }
