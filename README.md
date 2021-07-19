@@ -8,3 +8,7 @@ NORTH=0
 EAST=1
 SOUTH=2
 WEST=3
+
+
+
+NameStruct = X - 0x10
