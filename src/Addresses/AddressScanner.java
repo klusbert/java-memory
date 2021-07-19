@@ -10,5 +10,6 @@ public class AddressScanner {
         new Inventory().scan(_memoryScanner, addresses);
         new PlayerExperience().scan(_memoryScanner, addresses);
         new PlayerLevel().scan(_memoryScanner, addresses);
+        new BattleList().scan(_memoryScanner, addresses);
     }
 }

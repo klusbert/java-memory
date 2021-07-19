@@ -17,5 +17,8 @@ public class Inventory implements IAddress {
         long baseAddress = result.get(0);
 
         addresses.put(AddressIdentifier.INVENTORY, baseAddress + 0xB0);
+
+        System.out.println("Inventory start" + String.format("0x%08X", baseAddress + 0xB0));
+
     }
 }

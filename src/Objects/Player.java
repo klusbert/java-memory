@@ -30,4 +30,8 @@ public class Player {
     public Integer getPlayerLevel() {
         return memory.readInt(client.getAddress(AddressIdentifier.PLAYER_LEVEL));
     }
+
+    public Integer getRedSquare() {
+        return memory.readInt(client.getAddress(AddressIdentifier.RED_SQUARE));
+    }
 }

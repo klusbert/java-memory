@@ -10,6 +10,8 @@ public class Main {
 
     private JButton button1;
     private JPanel panelMain;
+    private JTabbedPane tabbedPane1;
+    private JTextField textField1;
 
     public Main() {
 
@@ -32,4 +34,6 @@ public class Main {
         jFrame.pack();
         jFrame.setVisible(true);
     }
+
+
 }

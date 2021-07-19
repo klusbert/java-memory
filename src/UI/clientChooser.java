@@ -1,7 +1,10 @@
 package UI;
 
+import Objects.Client;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class clientChooser extends JDialog {
     private JPanel contentPane;
@@ -49,10 +52,12 @@ public class clientChooser extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        Client.getClients();
     }
 
     private void onOK() {
-           ;
+        ;
         this.asd = "ok " + list1.getSelectedIndex();
         dispose();
     }
