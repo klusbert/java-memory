@@ -84,4 +84,16 @@ public class BattleList {
     public int getBattleListCount() {
         return memory.readInt(client.getAddress(AddressIdentifier.BATTLELIST_COUNT));
     }
+
+    public Creature getPlayer() {
+        for (Creature c : this.readBattleList()) {
+
+
+            if (c.getName().equals(client.getCharacterName())) {
+                return c;
+            }
+        }
+
+        return null;
+    }
 }

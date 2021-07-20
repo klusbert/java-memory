@@ -10,8 +10,6 @@ public class Program {
     private static Client client;
 
     public static void main(String[] args) {
-        int processId = 48764;
-
 
         List<Client> clients = Client.getClients();
         if (clients.size() > 0) {
@@ -22,10 +20,15 @@ public class Program {
 
             System.out.println(client);
 
+            Creature player = client.getBattleList().getPlayer();
+            player.fullLight();
+
+            System.out.println("Player = " + player);
+
             List<Creature> creatures = client.getBattleList().readBattleList();
             for (Creature c : creatures) {
-                System.out.println(c.getLocation());
-                c.getName();
+                System.out.println(c);
+
             }
 
         }
