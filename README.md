@@ -2,6 +2,9 @@ Download and import the jar from this link to be able to call native C functions
 
 https://github.com/java-native-access/jna
 
+Only tested on ubuntu 20.04 and you will need xdotool installed.
+
+sudo apt install xdotool
 
 Directions
 NORTH=0
