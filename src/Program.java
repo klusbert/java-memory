@@ -21,6 +21,9 @@ public class Program {
             System.out.println(client);
 
             Creature player = client.getBattleList().getPlayer();
+
+
+            System.out.println("Inventory " + String.format("0x%08X", client.getAddress(AddressIdentifier.INVENTORY)));
             player.fullLight();
 
             System.out.println("Player = " + player);

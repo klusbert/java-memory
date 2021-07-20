@@ -16,8 +16,6 @@ public class Creature {
         this.address = _address;
         this.id = _id;
         this.memory = client.getMemory();
-
-
     }
 
     public Location getLocation() {

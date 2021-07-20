@@ -12,7 +12,7 @@ public class PlayerExperience implements IAddress {
     public void scan(MemoryScanner _memoryScanner, Map<AddressIdentifier, Long> addresses) {
         List<Long> result = _memoryScanner.scanInt(26812944, true);
         if (result.size() != 1) {
-            System.out.println("Error finding player location address");
+            System.out.println("Error finding player Experience address");
         }
 
         long baseAddress = result.get(0);

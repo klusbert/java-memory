@@ -2,6 +2,7 @@ package Objects;
 
 import Addresses.AddressIdentifier;
 import Addresses.AddressScanner;
+import Objects.MiniMap.MiniMap;
 import Util.Bash;
 import Util.Memory;
 import Util.MemoryScanner;
@@ -18,6 +19,7 @@ import java.util.regex.Pattern;
 public class Client {
 
     private int pid;
+
     private int windowIdentifier;
     private Bash bash;
     private Memory memory;
@@ -26,6 +28,7 @@ public class Client {
     private AddressScanner addressScanner;
     private Map<AddressIdentifier, Long> addresses;
     private Player player;
+    private MiniMap miniMap;
     private Inventory inventory;
     private BattleList battleList;
 
@@ -51,6 +54,7 @@ public class Client {
         player = new Player(this);
         inventory = new Inventory(this);
         battleList = new BattleList(this);
+        miniMap = new MiniMap(this);
     }
 
     public long getAddress(AddressIdentifier identifier) {
