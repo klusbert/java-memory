@@ -18,20 +18,23 @@ public class BattleList {
         this.memory = client.getMemory();
     }
 
-    public void readBattleList() {
+    public List<Creature> readBattleList() {
         int head = memory.readInt(client.getAddress(AddressIdentifier.BATTLELIST_COLLECTION_START));
+        int count = memory.readInt(client.getAddress(AddressIdentifier.BATTLELIST_COUNT));
 
-
-        System.out.println("Curently " + memory.readInt(client.getAddress(AddressIdentifier.BATTLELIST_COUNT)));
-
-        System.out.println("Root start" + String.format("0x%08X", head));
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         List<Integer> read = new ArrayList<>();
         read.add(head);
         readTreeNode(head, map, read);
 
+        ArrayList<Creature> ret = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 
-        System.out.println(map.size());
+            ret.add(new Creature(client, entry.getValue(), entry.getKey()));
+        }
+
+        System.out.println("Count " + count + " found " + ret.size());
+        return ret;
     }
 
 
@@ -71,7 +74,7 @@ public class BattleList {
 
 
         if (creatureId > 1000) {
-            System.out.println(creatureId);
+
             map.put(creatureId, creatureStucture);
         }
 

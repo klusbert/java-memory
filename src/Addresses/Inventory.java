@@ -10,7 +10,7 @@ public class Inventory implements IAddress {
 
     @Override
     public void scan(MemoryScanner _memoryScanner, Map<AddressIdentifier, Long> addresses) {
-        List<Long> result = _memoryScanner.scanInt(26883408, true);
+        List<Long> result = _memoryScanner.scanInt(26887536, true);
         if (result.size() != 1) {
             System.out.println("Error finding player Inventory address");
         }

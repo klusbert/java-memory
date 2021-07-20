@@ -10,7 +10,7 @@ public class PlayerExperience implements IAddress {
 
     @Override
     public void scan(MemoryScanner _memoryScanner, Map<AddressIdentifier, Long> addresses) {
-        List<Long> result = _memoryScanner.scanInt(26808816, true);
+        List<Long> result = _memoryScanner.scanInt(26812944, true);
         if (result.size() != 1) {
             System.out.println("Error finding player location address");
         }
