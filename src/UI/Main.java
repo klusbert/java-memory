@@ -12,6 +12,8 @@ public class Main {
     private JPanel panelMain;
     private JTabbedPane tabbedPane1;
     private JTextField textField1;
+    private JList list1;
+    private Client client;
 
     public Main() {
 
@@ -19,12 +21,19 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                clientChooser clientChooser = new clientChooser();
+                button1.setText(client.getBattleList().getPlayer().getName());
+                button1.setBackground(client.getMiniMap().getColor(client.getPlayer().getLocation()));
 
-
-                System.out.println(clientChooser.getClient());
             }
         });
+
+
+        this.client = new clientChooser().getClient();
+        this.client.selectClient();
+        if (client == null) {
+            System.exit(-1);
+        }
+
     }
 
     public static void main(String[] args) {

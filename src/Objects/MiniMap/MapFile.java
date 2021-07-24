@@ -2,18 +2,45 @@ package Objects.MiniMap;
 
 import Objects.Location;
 
+import java.awt.image.BufferedImage;
+
 public class MapFile {
 
 
     private Location location;
-    private String colorPath;
-    private String waypointPath;
 
+    public Location getLocation() {
+        return location;
+    }
 
-    public MapFile(Location location, String colorPath, String waypointPath) {
+    public void setLocation(Location location) {
         this.location = location;
-        this.colorPath = colorPath;
-        this.waypointPath = waypointPath;
+    }
+
+    public BufferedImage getImageColor() {
+        return imageColor;
+    }
+
+    public void setImageColor(BufferedImage imageColor) {
+        this.imageColor = imageColor;
+    }
+
+    public BufferedImage getImageWaypoint() {
+        return imageWaypoint;
+    }
+
+    public void setImageWaypoint(BufferedImage imageWaypoint) {
+        this.imageWaypoint = imageWaypoint;
+    }
+
+    private BufferedImage imageColor;
+    private BufferedImage imageWaypoint;
+
+
+    public MapFile(Location location, BufferedImage imageColor, BufferedImage imageWaypoint) {
+        this.location = location;
+        this.imageColor = imageColor;
+        this.imageWaypoint = imageWaypoint;
 
 
     }

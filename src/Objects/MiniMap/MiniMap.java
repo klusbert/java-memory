@@ -4,11 +4,18 @@ import Objects.Client;
 import Objects.Location;
 import Util.MemoryRegion;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileNotFoundException;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MiniMap {
 
@@ -17,11 +24,13 @@ public class MiniMap {
 
     private String path;
 
-    private Map<Location, MapFile> mapFileMap;
+    private List<MapFile> mapFiles;
+    private Floor[] floors;
 
     public MiniMap(Client client) {
 
         File myObj = new File("/proc/" + client.getPid() + "/maps");
+        mapFiles = new ArrayList<>();
 
         Scanner myReader = null;
         try {
@@ -39,7 +48,8 @@ public class MiniMap {
             e.printStackTrace();
         }
 
-        readWaypointCost();
+        this.readWaypointCost();
+        this.getBoundaries();
 
     }
 
@@ -61,17 +71,55 @@ public class MiniMap {
                 File color = new File(colorFullLocation);
                 File waypoint = new File(waypointCostFullLocation);
 
-                boolean b = waypoint.exists();
-                boolean b1 = color.exists();
                 location.setX(Integer.parseInt(filename[2]));
                 location.setY(Integer.parseInt(filename[3]));
                 location.setZ(Integer.parseInt(filename[4]));
-                System.out.println(location);
+
+                BufferedImage imageColor = null;
+                BufferedImage imageWayPoint = null;
+                try {
+                    imageColor = ImageIO.read(color);
+                    imageWayPoint = ImageIO.read(waypoint);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mapFiles.add(new MapFile(location, imageColor, imageWayPoint));
 
             }
 
 
         }
+    }
+
+    private void getBoundaries() {
+
+        int minZ = Integer.MAX_VALUE;
+        int maxZ = Integer.MIN_VALUE;
+        for (MapFile m : this.mapFiles) {
+            if (m.getLocation().getZ() > maxZ)
+                maxZ = m.getLocation().getZ();
+            if (m.getLocation().getZ() < minZ)
+                minZ = m.getLocation().getZ();
+
+        }
+        floors = new Floor[maxZ];
+
+        for (int z = minZ; z < maxZ; z++) {
+            int finalZ = z;
+            floors[z] = new Floor(z, mapFiles.stream().filter(mapFile -> mapFile.getLocation().getZ() == finalZ).collect(Collectors.toList()));
+
+        }
+        System.out.println("Minz " + minZ + " maxZ " + maxZ);
+
+    }
+
+    public Color getColor(Location location) {
+        try {
+            return this.floors[location.getZ()].getColor(location);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

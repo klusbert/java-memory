@@ -5,6 +5,7 @@ import Objects.Client;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.List;
 
 public class clientChooser extends JDialog {
     private JPanel contentPane;
@@ -12,7 +13,8 @@ public class clientChooser extends JDialog {
     private JButton buttonCancel;
     private JList list1;
 
-    public String asd;
+    public Client client;
+    List<Client> clientList;
 
     public clientChooser() {
         setContentPane(contentPane);
@@ -20,10 +22,12 @@ public class clientChooser extends JDialog {
         getRootPane().setDefaultButton(buttonOK);
 
         DefaultListModel<String> model = new DefaultListModel<>();
+
+        clientList = Client.getClients();
+
         list1.setModel(model);
-        model.addElement("asd");
-        model.addElement("asd1");
-        model.addElement("asd2");
+
+        clientList.forEach(client -> model.addElement(client.toString()));
 
 
         buttonOK.addActionListener(new ActionListener() {
@@ -57,22 +61,26 @@ public class clientChooser extends JDialog {
     }
 
     private void onOK() {
-        ;
-        this.asd = "ok " + list1.getSelectedIndex();
+
+        if (list1.getSelectedIndex() > -1)
+            this.client = clientList.get(list1.getSelectedIndex());
+         else
+            this.client = null;
+
         dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
-        this.asd = "not ok";
+        this.client = null;
         dispose();
 
     }
 
-    public String getClient() {
+    public Client getClient() {
         this.pack();
         this.setVisible(true);
-        return asd;
+        return client;
     }
 
     public static void main(String[] args) {

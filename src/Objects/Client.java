@@ -28,6 +28,8 @@ public class Client {
     private AddressScanner addressScanner;
     private Map<AddressIdentifier, Long> addresses;
     private Player player;
+
+
     private MiniMap miniMap;
     private Inventory inventory;
     private BattleList battleList;
@@ -75,6 +77,10 @@ public class Client {
 
     public BattleList getBattleList() {
         return battleList;
+    }
+
+    public MiniMap getMiniMap() {
+        return miniMap;
     }
 
 
