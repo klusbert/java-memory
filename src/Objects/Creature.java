@@ -1,5 +1,6 @@
 package Objects;
 
+import Addresses.AddressIdentifier;
 import Util.Memory;
 
 import java.nio.charset.StandardCharsets;
@@ -31,6 +32,8 @@ public class Creature {
     }
 
     public void fullLight() {
+
+        System.out.println("ligh " + String.format("0x%08X", address + 0x60));
         memory.writeInt(address + 0x60, 27);
         memory.writeBytes(address + 0x60 + 0xC, new byte[]{-1, -1, -1, -1, -1, -1});
 
