@@ -8,6 +8,7 @@ public enum AddressIdentifier {
     PLAYER_EXPERIENCE,
     PLAYER_LEVEL,
     RED_SQUARE,
+    TARGET_HOVER,
     BATTLELIST_COUNT,
     BATTLELIST_COLLECTION_START
 }

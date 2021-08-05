@@ -1,10 +1,14 @@
 package UI;
 
 import Objects.Client;
+import Objects.Creature;
+import Objects.Location;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 public class Main {
 
@@ -12,7 +16,7 @@ public class Main {
     private JPanel panelMain;
     private JTabbedPane tabbedPane1;
     private JTextField textField1;
-    private JList list1;
+    private JPanel panel1;
     private Client client;
 
     public Main() {
@@ -23,6 +27,11 @@ public class Main {
 
                 button1.setText(client.getBattleList().getPlayer().getName());
                 button1.setBackground(client.getMiniMap().getColor(client.getPlayer().getLocation()));
+                Creature player = client.getBattleList().getPlayer();
+
+                System.out.println(player.getId());
+                System.out.println("player address" + String.format("0x%08X", player.getAddress()));
+                player.fullLight();
 
             }
         });

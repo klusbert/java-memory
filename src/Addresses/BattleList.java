@@ -15,12 +15,9 @@ public class BattleList implements IAddress {
         long baseAddress = result.get(0);
 
 
-        System.out.println("battlelist start" + String.format("0x%08X", baseAddress + 0x30));
-        System.out.println("battlelist count" + String.format("0x%08X", baseAddress + 0x38));
         addresses.put(AddressIdentifier.BATTLELIST_COLLECTION_START, baseAddress + 0x30);
-
         addresses.put(AddressIdentifier.BATTLELIST_COUNT, baseAddress + 0x38);
-
+        addresses.put(AddressIdentifier.TARGET_HOVER, baseAddress + 0x44);
         addresses.put(AddressIdentifier.RED_SQUARE, baseAddress + 0x4C);
     }
 }

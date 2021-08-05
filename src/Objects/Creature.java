@@ -31,6 +31,14 @@ public class Creature {
         return memory.readQString(nameStruct);
     }
 
+    public long getId() {
+        return this.id;
+    }
+
+    public long getAddress() {
+        return this.address;
+    }
+
     public void fullLight() {
 
         System.out.println("ligh " + String.format("0x%08X", address + 0x60));
