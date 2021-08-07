@@ -17,5 +17,6 @@ public class PlayerExperience implements IAddress {
 
         long baseAddress = result.get(0);
         addresses.put(AddressIdentifier.PLAYER_EXPERIENCE, baseAddress + 0x28);
+        addresses.put(AddressIdentifier.FOOD,baseAddress+        0x80);
     }
 }

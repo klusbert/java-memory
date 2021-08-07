@@ -85,12 +85,11 @@ public class BattleList {
         return memory.readInt(client.getAddress(AddressIdentifier.BATTLELIST_COUNT));
     }
 
-    public Creature getPlayer() {
+    public Player getPlayer() {
         for (Creature c : this.readBattleList()) {
 
-
             if (c.getName().equals(client.getCharacterName())) {
-                return c;
+                return new Player(client,c.getAddress(),c.getId());
             }
         }
 

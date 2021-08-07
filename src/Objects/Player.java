@@ -4,12 +4,13 @@ import Addresses.AddressIdentifier;
 import Addresses.PlayerExperience;
 import Util.Memory;
 
-public class Player {
+public class Player extends Creature {
     private Client client;
     private Memory memory;
 
 
-    public Player(Client _client) {
+    public Player(Client _client, long address, long id) {
+        super(_client, address, id);
         this.client = _client;
         this.memory = client.getMemory();
     }
@@ -25,6 +26,10 @@ public class Player {
 
     public Integer getExperience() {
         return memory.readInt(client.getAddress(AddressIdentifier.PLAYER_EXPERIENCE));
+    }
+
+    public Integer getFoodStatus() {
+        return memory.readInt(client.getAddress(AddressIdentifier.FOOD));
     }
 
     public Integer getPlayerLevel() {

@@ -1,8 +1,10 @@
 package UI;
 
+import Addresses.AddressIdentifier;
 import Objects.Client;
 import Objects.Creature;
 import Objects.Location;
+import Objects.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +19,8 @@ public class Main {
     private JTabbedPane tabbedPane1;
     private JTextField textField1;
     private JPanel panel1;
+    private JLabel playerName;
+    private JLabel food;
     private Client client;
 
     public Main() {
@@ -27,10 +31,12 @@ public class Main {
 
                 button1.setText(client.getBattleList().getPlayer().getName());
                 button1.setBackground(client.getMiniMap().getColor(client.getPlayer().getLocation()));
-                Creature player = client.getBattleList().getPlayer();
+                Player player = client.getPlayer();
 
-                System.out.println(player.getId());
-                System.out.println("player address" + String.format("0x%08X", player.getAddress()));
+
+                playerName.setText(player.getName());
+                food.setText(player.getFoodStatus().toString());
+
                 player.fullLight();
 
             }
@@ -39,6 +45,8 @@ public class Main {
 
         this.client = new clientChooser().getClient();
         this.client.selectClient();
+
+        System.out.println("EXP address" + String.format("0x%08X", client.getAddress(AddressIdentifier.PLAYER_EXPERIENCE)));
         if (client == null) {
             System.exit(-1);
         }
@@ -51,6 +59,8 @@ public class Main {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.pack();
         jFrame.setVisible(true);
+
+
     }
 
 

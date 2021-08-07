@@ -86,6 +86,7 @@ public class clientChooser extends JDialog {
     public static void main(String[] args) {
         clientChooser dialog = new clientChooser();
         dialog.pack();
+        dialog.isAlwaysOnTop();
         dialog.setVisible(true);
         System.exit(0);
     }

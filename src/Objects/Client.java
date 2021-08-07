@@ -53,10 +53,10 @@ public class Client {
         addressScanner = new AddressScanner(memoryScanner, addresses);
 
 
-        player = new Player(this);
         inventory = new Inventory(this);
         battleList = new BattleList(this);
         miniMap = new MiniMap(this);
+        player = battleList.getPlayer();
     }
 
     public long getAddress(AddressIdentifier identifier) {
